@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	color: white;
+	background-color: #131313;
+}
+
+button {
+	cursor: pointer;
+	color: white;
+	border: 3px solid #005D70;
+	background-color: #131313;
+	transition-duration: 200ms;
+	font-size: 110%;
+	padding: 0.4em;
+
+	width: 100%;
+	max-width: 192px;
+}
+
+button:hover {
+	border-color: #05A38B;
+}
+
+#sidebar {
+	position: fixed;
+	top: 0;
+
+	height: 100%;
+	width: 17.5em;
+	border-right: 3px solid #005D70;
+
+	background-color: #212224;
+	text-align: center;
+}
+
+#sidebarContent {
+	margin-top: 2.5em;
+}
+
+#gameplayContainer {
+	text-align: center;
+
+	margin: 2.5em;
+	margin-left: 20em;
+}
+
+/* --- Random Shit --- */
+
+.zeroMargin {
+	margin: 0;
+}
