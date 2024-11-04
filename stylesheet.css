@@ -58,7 +58,7 @@ input {
 	background-color: #212224;
 	text-align: center;
 
-	visibility: visible;
+	visibility: hidden;
 }
 
 #sidebar-content {
@@ -72,7 +72,7 @@ input {
 	margin: 2.5em;
 	margin-left: 2.5em;
 
-	transition: 200ms;
+	transition-duration: 200ms;
 }
 
 #gameplay-content {
