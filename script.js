@@ -6,10 +6,11 @@ const menuBackgrounds = [
 	"url(assets/GFX/Storyline/Inspection.png)"
 ];
 
+let playerName = "Niko";
+
 document.addEventListener('DOMContentLoaded', Start);
 
 function Start() {
-	//setInterval(ChangeMenuBackground, 2000);
 }
 
 // Debug shit
@@ -37,15 +38,25 @@ function ChangeMenuBackground() {
 // Gameplay
 
 function StartGame() {
-	const gameplayContainer = document.getElementById("gameplay-content");
+	const gameplayHolder = document.getElementById("gameplay-holder");
 	const sidebar = document.getElementById("sidebar");
 	const body = document.body;
 
 	ChangeGameplayMargin();
 
 	SetPage("INTRO");
+	gameplayHolder.style.textAlign = "left";
 	sidebar.style.visibility = "visible";
 	body.style.backgroundImage = "none";
+}
+
+function SetPlayerName() {
+	const inputPlayerName = document.getElementById("input-player-name");
+	const newPlayerName = inputPlayerName.value;
+
+	if (newPlayerName == "") { return; }
+
+	playerName = newPlayerName;
 }
 
 // Extra shit
@@ -55,58 +66,10 @@ function RandomRange(min, max) { // Source: https://www.w3schools.com/JS/js_rand
 }
 
 // Pages
+// -- GetPage function moved to own file: dialogue.js --
 
 function SetPage(newPageID) {
 	const gameplayContainer = document.getElementById("gameplay-content");
 
 	gameplayContainer.innerHTML = GetPage(newPageID);
-}
-
-function GetPage(newPageID) {
-	switch (newPageID) {
-		case "DEBUG":
-			return `
-				<p>Langer Text bzw. Text eines NPCs</p>
-		
-				<p class="dialogue-option not-selectable">(1) Interaktion A</p>
-				<p class="dialogue-option not-selectable">(2) Interaktion B</p>
-				<p class="dialogue-option not-selectable">(3) Interaktion C</p>
-		
-				<p>Spielernamen eingeben:</p>
-				<input type="" name="" id="input-player-name"> <br><br>
-
-				<button onclick="ChangeGameplayMargin()">debug margin-left</button>  <br><br>
-				<button onclick="ChangeMenuBackground()">debug menu background</button>
-
-				<p id="debug-text"></p>
-
-				<p class="dialogue-option not-selectable clickable-interaction" onclick="SetPage('INTRO')">Weiter</p>
-			`;
-		case "INTRO":
-			return `
-				<h1>Willkommen bei AdventureCraft!</h1>
-
-				<br><br>
-
-				[WICHTIGE PLOT-PUNKTE HIER SCHREIBEN]
-
-				<br><br>
-
-				[ZUSÄTZLICHER TIPP HIER]
-
-				<p class="dialogue-option not-selectable clickable-interaction" onclick="SetPage('smth that does not exist')">Weiter</p>
-			`;
-		default:
-			return `
-				<h1>! Achtung !</h1>
-
-				Keine gültige Seiten-ID eingegeben!
-
-				<br><br>
-
-				Zurück zur Startseite:
-
-				<p class="dialogue-option not-selectable clickable-interaction" onclick="SetPage('DEBUG')">Weiter</p>
-			`;
-	}
 }

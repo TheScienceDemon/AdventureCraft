@@ -1,8 +1,18 @@
+:root {
+	--color-gray:#131313;
+	--color-lighter-gray:#212224;
+	--color-blue:#005D70;
+	--color-lighter-blue:#009EC1;
+	--color-light-blue:#05A38B;
+	--color-link:#5888DD;
+	--color-link-hover:#88AAFF;
+}
+
 body {
 	margin: 0;
 	color: white;
 	font-family: sans-serif, 'Monocraft', 'Courier New', monospace;
-	background-color: #131313;
+	background-color: var(--color-gray);
 
 	background-image: url(assets/GFX/Background.jpg);
 	background-repeat: no-repeat;
@@ -20,8 +30,8 @@ button {
 	cursor: pointer;
 	color: white;
 	font-family: 'Monocraft', 'Courier New', monospace;
-	border: 3px solid #005D70;
-	background-color: #131313;
+	border: 3px solid var(--color-blue);
+	background-color: var(--color-gray);
 	transition-duration: 200ms;
 	font-size: 110%;
 	padding: 0.4em;
@@ -31,14 +41,14 @@ button {
 }
 
 button:hover {
-	border-color: #05A38B;
+	border-color: var(--color-light-blue);
 }
 
 input {
 	color: white;
 	font-family: 'Monocraft', 'Courier New', monospace;
-	border: 3px solid #005D70;
-	background-color: #131313;
+	border: 3px solid var(--color-blue);
+	background-color: var(--color-gray);
 	font-size: 110%;
 	padding: 0.4em;
 
@@ -53,9 +63,9 @@ input {
 
 	height: 100%;
 	width: 17.5em;
-	border-right: 3px solid #005D70;
+	border-right: 3px solid var(--color-lighter-blue);
 
-	background-color: #212224;
+	background-color: var(--color-lighter-gray);
 	text-align: center;
 
 	visibility: hidden;
@@ -71,8 +81,10 @@ input {
 
 	margin: 2.5em;
 	margin-left: 2.5em;
+}
 
-	transition-duration: 200ms;
+#gameplay-holder h1 {
+	text-align: center;
 }
 
 #gameplay-content {
@@ -89,16 +101,12 @@ input {
 	cursor: pointer;
 	font-style: italic;
 	
-	color: grey;
+	color: var(--color-link);
 	transition-duration: 250ms;
 }
 
 .dialogue-option:hover {
-	color: #005D70;
-}
-
-.dialogue-option:active {
-	color: #05A38B;
+	color: var(--color-link-hover);
 }
 
 /* --- Random Shit --- */
