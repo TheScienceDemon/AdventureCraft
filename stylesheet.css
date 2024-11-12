@@ -90,6 +90,7 @@ input {
 #gameplay-content {
 	max-width: 56em;
 	margin: 0 auto;
+	text-shadow: 1px 1px black;
 }
 
 #title-image {
