@@ -21,6 +21,8 @@ function GetPage(newPageID) {
 				<p class="dialogue-option not-selectable clickable-interaction" onclick="SetPage('INTRO')">Zurück zum Start</p>
 			`;
 		case "INTRO":
+			document.body.style.backgroundImage = "url('assets/GFX/Storyline/Opening.png')";
+
 			return `
 				<h1>Willkommen bei AdventureCraft!</h1>
 

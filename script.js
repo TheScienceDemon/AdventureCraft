@@ -40,14 +40,12 @@ function ChangeMenuBackground() {
 function StartGame() {
 	const gameplayHolder = document.getElementById("gameplay-holder");
 	const sidebar = document.getElementById("sidebar");
-	const body = document.body;
 
 	ChangeGameplayMargin();
 
 	SetPage("INTRO");
 	gameplayHolder.style.textAlign = "left";
 	sidebar.style.visibility = "visible";
-	body.style.backgroundImage = "none";
 }
 
 function SetPlayerName() {
