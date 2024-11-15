@@ -1,16 +1,26 @@
 const gameplayMarginLeftNormal = '40px'; // 2.5em
 const gameplayMarginLeftWide = '320px'; //20em
 
-const menuBackgrounds = [
-	"url(assets/GFX/Storyline/Meteor.png)",
-	"url(assets/GFX/Storyline/Inspection.png)"
-];
+let dialogueLinks = [];
 
 let playerName = "Niko";
 
 document.addEventListener('DOMContentLoaded', Start);
+document.addEventListener('keydown', OnKeyDown);
 
 function Start() {
+}
+
+function OnKeyDown(ev) {
+	if (!ev.code.includes("Digit")) { return; }
+	if (ev.repeat) { return; }
+
+	const digit = ev.code.substring(5, 6);
+
+	if (digit == 0) { return; }
+	if (dialogueLinks[digit - 1] == undefined) { return; }
+
+	SetPage(dialogueLinks[digit - 1]);
 }
 
 // Debug shit
@@ -29,10 +39,6 @@ function ChangeGameplayMargin() {
 		: gameplayMarginLeftNormal;
 
 	gameplayHolder.style.marginLeft = newMargin;
-}
-
-function ChangeMenuBackground() {
-	document.body.style.backgroundImage = menuBackgrounds[RandomRange(0, 1)];
 }
 
 // Gameplay
@@ -70,4 +76,29 @@ function SetPage(newPageID) {
 	const gameplayContainer = document.getElementById("gameplay-content");
 
 	gameplayContainer.innerHTML = GetPage(newPageID);
+	dialogueLinks = GenerateShortcuts();
+}
+
+function GenerateShortcuts() {
+	const dialogueOptions = document.getElementsByClassName("dialogue-option");
+	const dialogueOptionLinks = [];
+
+	for (let i = 0; i < dialogueOptions.length; i++) {
+		const option = dialogueOptions[i];
+		const dialogueText = option.innerHTML;
+
+		option.innerHTML = `(${i + 1}) ${dialogueText}`;
+
+		if (!option.attributes['onclick']) { continue; }
+
+		let onClick = option.attributes['onclick'].value;
+
+		if (onClick.includes("SetPlayerName();")) {
+			onClick = onClick.replace("SetPlayerName();", "");
+		}
+
+		dialogueOptionLinks[i] = onClick.substring(9, onClick.length - 2);
+	}
+
+	return dialogueOptionLinks;
 }
